@@ -1,0 +1,44 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@*Bring in IndexViewModel (bag or container) to display the info.*@
+@model IndexViewModel
+
+
+<h1>@ViewBag.SelectedTeam</h1>
+<table class="table table-striped">
+    <thead class="bg-primary text-white">
+        <tr>
+            <td>First Name</td>
+            <td>Middle Inital</td>
+            <td>Last Name</td>
+            <td>Address</td>
+            <td>City</td>
+            <td>State</td>
+            <td>Zip</td>
+            <td>Phone</td>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var x in Model.Bowlers)
+        {
+            <tr>
+                <td>@x.BowlerFirstName</td>
+                <td>@x.BowlerMiddleInit</td>
+                <td>@x.BowlerLastName</td>
+                <td>@x.BowlerAddress</td>
+                <td>@x.BowlerCity</td>
+                <td>@x.BowlerState</td>
+                <td>@x.BowlerZip</td>
+                <td>@x.BowlerPhoneNumber</td>
+            </tr>
+         }
+     </tbody>
+</table>
+
+<div page-info="@Model.PageNumberingInfo" page-url-teamname="@Model.Team" page-action="Index" page-classes-enabled="true" page-class="btn" page-class-normal="btn-outline-primary"
+     page-class-selected="btn-primary" class="btn-group pull-right m-1">
+
+</div>

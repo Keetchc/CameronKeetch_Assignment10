@@ -1,0 +1,19 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model IEnumerable<Teams>
+
+<h1>@ViewBag.SelectedTeam</h1>
+
+@*Adds a button that lets you go to the null data point, meaning all data is returned.*@
+<a class="btn btn-block btn-outline-primary" asp-action="Index" asp-controller="Home" asp-route-teamid="">Home</a><br />
+
+@*A foreachloop that brings in the ability to filter by teamid*@
+@foreach (var team in Model)
+ {
+    <a asp-action="Index" asp-controller="Home" class="btn btn-block @(team.TeamName == ViewBag.SelectedTeam ? "btn-primary" : "btn-outline-primary")"
+       asp-route-teamid="@team.TeamId" asp-route-teamname="@team.TeamName">@team.TeamName</a><br />
+ }
